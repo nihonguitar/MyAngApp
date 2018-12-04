@@ -1,0 +1,24 @@
+<h2>
+  &nbsp;Employee List
+</h2>
+<ul *ngFor = "let employee of Users" class="list-group">
+  <li class="list-group-item">{{employee.Id}} {{employee.FirstName}} {{employee.LastName}}</li>
+</ul>
+<form #UserForm="ngForm">
+  {{UserForm.value | json}}<hr/>
+  {{userModel | json}}
+  <div class="form-group">
+    <label>FirstName</label>
+    <input type="text" class="form-control" name="FirstName" [ngModel]="userModel.FirstName">
+  </div>
+  <div class="form-group">
+    <label>LastName</label>
+    <input type="text" class="form-control" name="LastName" [ngModel]="userModel.LastName">
+  </div>
+  <div class="form-gropu">
+    <select class="custom-select" name="UserId" [ngModel]="userModel.Id" >
+      <option selected>Users Id</option>
+      <option *ngFor="let employee of Users">{{employee.Id}} {{employee.FirstName}}</option>
+    </select>
+  </div>
+</form>
